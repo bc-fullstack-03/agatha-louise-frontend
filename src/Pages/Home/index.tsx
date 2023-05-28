@@ -1,35 +1,34 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import api from '../../services/api';
 import getAuthHeader from '../../services/auth';
-import Menu from '../../components/Menu';
+import MainScreen from '../../components/MainScreen';
 import Feed from '../../components/Feed';
 
 
 function Home(){
-
+    const [posts, setPosts] = useState([]);
     const authHeader = getAuthHeader();
 
     useEffect(() => {
         async function getPosts(){
             try{
                 const { data } = await api.get("/feed", authHeader);
-                console.log(data)
+                setPosts(data);
             } catch (err){
                 alert("Erro ao obter o Feed")
             }
         }
 
         getPosts();
-
-    }, [authHeader]);
+    }, []);
 
     return (
         <div className='w-screen h-screen flex'>
-            <Menu />
-            <Feed />
+            <MainScreen>
+                <Feed posts={posts} />
+            </MainScreen>
         </div>
-
-    )
+    );
 
 }
 

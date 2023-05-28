@@ -1,6 +1,7 @@
 import logo_menu from '../../assets/logo_menu.svg';
+import { MenuItem } from '../MenuItem';
 import Text from '../Text';
-import { House } from '@phosphor-icons/react'
+import { House, User, UsersThree } from '@phosphor-icons/react'
 
 
 function Menu () {
@@ -12,12 +13,26 @@ function Menu () {
             </div>
 
             <ul className='pr-2'>
-                <li className='mt-5'>
-                    <div className='flex items-center px-4 rounded-full hover:bg-sky-400 ml-2'>
-                        <House size={48} className='text-slate-50' weight="fill"></House>
-                        <Text className='font-extrabold ml-4'>Página Inicial</Text>
-                    </div>
-                </li>
+                <MenuItem.Root route='/home'>
+                    <MenuItem.Icon>
+                        <House/>
+                    </MenuItem.Icon>
+                    <Text className='font-extrabold ml-4'>Página Inicial</Text>
+                </MenuItem.Root>
+
+                <MenuItem.Root route='/profile'>
+                    <MenuItem.Icon>
+                        <User/>
+                    </MenuItem.Icon>
+                    <Text className='font-extrabold ml-4'>Perfil</Text>
+                </MenuItem.Root>
+
+                <MenuItem.Root route='/friends'>
+                    <MenuItem.Icon>
+                        <UsersThree/>
+                    </MenuItem.Icon>
+                    <Text className='font-extrabold ml-4'>Amigos</Text>
+                </MenuItem.Root>
             </ul>
         </div>
     
