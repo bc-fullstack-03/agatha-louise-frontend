@@ -1,15 +1,17 @@
 import Menu from '../../components/Menu';
 import { ReactNode } from 'react';
+import { Post } from '../../Model/Post';
+
 
 interface MainScreenProps {
-    children: ReactNode
+    children: ReactNode;
+    postCreated?: (post: Post) => void;
 }
 
 function MainScreen(props: MainScreenProps){
-
     return (
         <div className='w-screen h-screen flex'>
-            <Menu />
+            <Menu postCreated={props.postCreated}/>
             {props.children}
         </div>
     )

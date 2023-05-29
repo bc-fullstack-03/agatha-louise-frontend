@@ -5,7 +5,6 @@ import Text from "../Text";
 import Button from "../Button";
 import api from "../../services/api";
 import getAuthHeader from '../../services/auth';
-import { GetScrollRestorationKeyFunction } from 'react-router-dom';
 
 
 interface Profile {

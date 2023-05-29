@@ -17,9 +17,16 @@ function PostItem ({ post }: PostItemProps){
             </Heading>
             <div className="ml-16 flex flex-col gap-2">
                 <Heading size="sm">{post.title}</Heading>
-                <Text asChild>
-                    <p>{post.description}</p>
-                </Text>
+                {post.image ? (
+                    <img
+                        src={`http://localhost:9000/${post.description}`}
+                        className="max-w-lg rounded-lg">
+                    </img>) : (
+                    <Text asChild>
+                        <p>{post.description}</p>
+                    </Text>
+                )}
+
             </div>
             <footer className="flex items-center ml-16 m-4 space-x-2">
                 <Chat size={24} className="text-slate-50" />

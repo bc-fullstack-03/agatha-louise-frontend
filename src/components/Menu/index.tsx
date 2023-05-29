@@ -1,10 +1,28 @@
+import * as Dialog from '@radix-ui/react-dialog';
 import logo_menu from '../../assets/logo_menu.svg';
 import { MenuItem } from '../MenuItem';
 import Text from '../Text';
 import { House, User, UsersThree } from '@phosphor-icons/react'
+import CreatePostButton from '../CreatePostButton';
+import CreatePostDialog from '../CreatePostDialog';
+import { Post } from '../../Model/Post';
+import { useState } from 'react';
 
 
-function Menu () {
+
+interface MenuProps {
+    postCreated?: (post: Post) => void;
+}
+
+
+function Menu (props: MenuProps) {
+    const [open, setOpen] = useState(false);
+
+    function postCreated(post: Post){
+        setOpen(false)
+        props.postCreated && props.postCreated(post);
+    }
+
     return ( 
         <div className="basis-1/6 border-r border-slate-400 ml-4 pt-4">
             <div className='flex items-center ml-4'>
@@ -34,6 +52,13 @@ function Menu () {
                     <Text className='font-extrabold ml-4'>Amigos</Text>
                 </MenuItem.Root>
             </ul>
+
+            <footer className="flex flex-col items-center">
+                <Dialog.Root open={open} onOpenChange={setOpen}>
+                    <CreatePostButton />
+                    <CreatePostDialog postCreated={postCreated} />
+                </Dialog.Root>
+            </footer>
         </div>
     
     );
