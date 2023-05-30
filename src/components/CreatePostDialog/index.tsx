@@ -4,7 +4,7 @@ import { TextInput } from '../TextInput';
 import Button from '../Button';
 import { FormEvent, useState } from 'react';
 import api from "../../services/api";
-import getAuthHeader from '../../services/auth';
+import { getAuthHeader } from '../../services/auth';
 import { Post } from '../../Model/Post';
 import Dropzone from '../Dropzone';
 
