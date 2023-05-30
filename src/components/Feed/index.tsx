@@ -7,11 +7,12 @@ import PostItem from "../PostItem";
 
 interface FeedProps {
     posts: Post[];
+    handleLike: (postId: string) => void;
 }
 
 
-function Feed ({ posts }: FeedProps) {
-    console.log(posts)
+function Feed ({ posts, handleLike }: FeedProps) {
+
     return (
         <div className="basis-5/6 overflow-y-auto scroll-smooth">
             <Heading className="border-b border-slate-400 mt-4">
@@ -26,7 +27,7 @@ function Feed ({ posts }: FeedProps) {
             <section>
                 {posts &&
                 posts.map((post: Post) => 
-                    <PostItem post={post}/>
+                    <PostItem post={post} handleLike={handleLike} key={post._id}/>
                 )}
             </section>
         </div>
