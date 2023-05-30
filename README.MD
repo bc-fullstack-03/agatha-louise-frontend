@@ -28,8 +28,6 @@ docker compose up
 
 ##  Rodando o Frontend
 
-### Instalando as dependências
-
 ```
 npm install
 ```
